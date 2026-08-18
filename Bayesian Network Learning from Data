@@ -1,0 +1,46 @@
+print("QUESTION 5: BAYESIAN NETWORK LEARNING")
+print("--------------------------------------")
+data = [
+    ["Young", "Low", "Bike", "No"],
+    ["Young", "High", "Car", "No"],
+    ["Middle", "High", "Car", "Yes"],
+    ["Middle", "Low", "Bike", "No"],
+    ["Old", "High", "Car", "Yes"],
+    ["Old", "Low", "Bike", "Yes"],
+    ["Young", "High", "Car", "No"],
+    ["Middle", "High", "Bike", "Yes"],
+    ["Old", "Low", "Car", "Yes"],
+    ["Young", "Low", "Bike", "No"]
+]
+print("Dataset:")
+print("Age  Income  Vehicle  Claim")
+for row in data:
+    print(row)
+print("\nLearned Network Structure:")
+print("Age -> Claim")
+print("Income -> Claim")
+print("Vehicle -> Claim")
+age = "Old"
+income = "High"
+vehicle = "Car"
+yes = 0
+total = 0
+for row in data:
+    if row[0] == age and row[1] == income and row[2] == vehicle:
+        total += 1
+        if row[3] == "Yes":
+            yes += 1
+if total > 0:
+    probability = yes / total
+else:
+    probability = 0
+print("\nNew Customer:")
+print("Age =", age)
+print("Income =", income)
+print("Vehicle =", vehicle)
+print("\nProbability of Insurance Claim =",
+      probability * 100, "%")
+if probability >= 0.5:
+    print("Prediction = YES")
+else:
+    print("Prediction = NO")
