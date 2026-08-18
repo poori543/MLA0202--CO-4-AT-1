@@ -1,0 +1,28 @@
+print("QUESTION 4: CONDITIONAL RANDOM FIELD")
+print("-------------------------------------")
+training = {
+    "John": "CUSTOMER",
+    "Alice": "CUSTOMER",
+    "Rahul": "CUSTOMER",
+    "Laptop": "PRODUCT",
+    "Phone": "PRODUCT",
+    "Tablet": "PRODUCT",
+    "Order123": "ORDER_ID",
+    "Order456": "ORDER_ID",
+    "Order789": "ORDER_ID"
+}
+sentence = ["David", "ordered", "Laptop", "Order999"]
+print("Sentence:", sentence)
+print("\nPredicted Labels:")
+for word in sentence:
+    if word in training:
+        label = training[word]
+    elif word.startswith("Order"):
+        label = "ORDER_ID"
+    elif word in ["Laptop", "Phone", "Tablet"]:
+        label = "PRODUCT"
+    elif word[0].isupper():
+        label = "CUSTOMER"
+    else:
+        label = "O"
+    print(word, "->", label)
