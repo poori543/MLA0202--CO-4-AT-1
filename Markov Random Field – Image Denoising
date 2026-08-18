@@ -1,0 +1,19 @@
+print("QUESTION 3: MARKOV RANDOM FIELD")
+print("--------------------------------")
+image = [
+    [10, 20, 30],
+    [20, 200, 40],
+    [30, 40, 50]
+]
+print("Original Image:")
+for row in image:
+    print(row)
+top = image[0][1]
+bottom = image[2][1]
+left = image[1][0]
+right = image[1][2]
+average = (top + bottom + left + right) / 4
+image[1][1] = average
+print("\nUpdated Image:")
+for row in image:
+    print(row)
